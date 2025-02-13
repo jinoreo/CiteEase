@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>引易 - 法学引用格式转换工具</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="emoji">📚</span>
+                <h1>引易</h1>
+            </div>
+            <p class="subtitle">优雅的法学引用格式转换工具</p>
+            <p class="subtitle">支持《法学引注手册》与 GB/T7714-2015 国标格式互转</p>
+        </header>
+
+        <main>
+            <div class="converter-container">
+                <div class="input-section">
+                    <div class="format-selector">
+                        <h2><span class="emoji">✏️</span> 输入文本</h2>
+                        <div class="custom-select">
+                            <button class="select-button" id="formatButton">
+                                <span class="selected-text">法学引注手册 → GB/T7714-2015</span>
+                                <svg class="select-arrow" width="12" height="12" viewBox="0 0 12 12">
+                                    <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="2" fill="none"/>
+                                </svg>
+                            </button>
+                            <div class="select-dropdown" id="formatDropdown">
+                                <div class="select-option selected" data-value="law2gb">
+                                    法学引注手册 → GB/T7714-2015
+                                </div>
+                                <div class="select-option" data-value="gb2law">
+                                    GB/T7714-2015 → 法学引注手册
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="number-options">
+                        <label>
+                            <input type="checkbox" id="keepNumbers">
+                            不保留序号（如[1]、[2]等）
+                        </label>
+                    </div>
+                    <textarea 
+                        id="inputText" 
+                        placeholder="请输入需要转换的引用文本..."
+                    ></textarea>
+                    <div class="format-info">
+                        <span class="format-label">当前格式：</span>
+                        <span id="formatInfo">等待输入...</span>
+                    </div>
+                    <div class="button-group">
+                        <button id="clearBtn" class="secondary">清空</button>
+                        <button id="convertBtn" class="primary">转换</button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2><span class="emoji">✨</span> 转换结果</h2>
+                    <textarea 
+                        id="outputText" 
+                        readonly
+                        placeholder="转换后的文本将显示在这里..."
+                    ></textarea>
+                    <div class="button-group">
+                        <button id="copyBtn" class="secondary">复制结果</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="supported-formats">
+                <h3><span class="emoji">😄</span> 支持的格式</h3>
+                <ul>
+                    <li><span class="emoji">📖</span> 图书</li>
+                    <li><span class="emoji">📰</span> 期刊论文</li>
+                    <li><span class="emoji">🎓</span> 学位论文</li>
+                    <li><span class="emoji">📑</span> 报纸</li>
+                    <li><span class="emoji">🌐</span> 网络文献</li>
+                </ul>
+            </div>
+            <div class="footer-note">
+                <p>Made with <span class="emoji">💜</span> for Law Students</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="scripts/utils.js"></script>
+    <script src="scripts/converter.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/formatDetector.js"></script>
+</body>
+</html> 

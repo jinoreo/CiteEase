@@ -1,0 +1,22 @@
+.header {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+.logo h1 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: var(--secondary-color);
+    margin: var(--spacing-sm) 0;
+} 

@@ -1,0 +1,449 @@
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #666666;
+    --accent-color: #6366f1;
+    --hover-color: #4f46e5;
+    --background-color: #fafafa;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --accent-light: rgba(99, 102, 241, 0.1);
+    --gradient-start: #6366f1;
+    --gradient-end: #8b5cf6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+}
+
+.subtitle {
+    color: var(--secondary-color);
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.format-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.custom-select {
+    position: relative;
+    min-width: 280px;
+}
+
+.select-button {
+    appearance: none;
+    background: white;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.select-button:hover {
+    border-color: var(--accent-color);
+    background-color: var(--background-color);
+}
+
+.select-button:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.select-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.select-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.select-option {
+    direction: ltr;
+    background: white;
+    color: var(--primary-color);
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.select-option:hover {
+    background: var(--background-color);
+}
+
+.select-option.selected {
+    background: var(--accent-color);
+    color: white;
+}
+
+.select-arrow {
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+}
+
+.select-button[aria-expanded="true"] .select-arrow {
+    transform: rotate(180deg);
+}
+
+.converter-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.input-section, .output-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.input-section::before,
+.output-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    resize: vertical;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.format-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.format-label {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.primary:hover {
+    background-color: var(--hover-color);
+}
+
+.secondary {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+}
+
+.secondary:hover {
+    background-color: var(--background-color);
+    border-color: var(--secondary-color);
+}
+
+footer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.supported-formats {
+    text-align: center;
+}
+
+.supported-formats h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.supported-formats ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.supported-formats li {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.supported-formats li:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--accent-light);
+}
+
+@media (max-width: 768px) {
+    .converter-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    background-color: #2ecc71;
+    color: white;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+}
+
+.message-error {
+    background-color: #e74c3c;
+}
+
+.message-warning {
+    background-color: #f1c40f;
+}
+
+.message-success {
+    background-color: #2ecc71;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--accent-light), rgba(139, 92, 246, 0.1));
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.emoji {
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+h2 .emoji {
+    font-size: 1.2em;
+    margin-right: 0.5rem;
+}
+
+.footer-note {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+.footer-note .emoji {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+/* 格式检测相关样式 */
+.format-detail {
+    margin-top: 0.5rem;
+}
+
+.format-main {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.format-confidence {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+}
+
+.format-issues {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: var(--accent-light);
+}
+
+.issue-item {
+    font-size: 0.9em;
+    color: var(--secondary-color);
+    margin: 0.25rem 0;
+}
+
+.issue-item:before {
+    content: '⚠️';
+    margin-right: 0.5rem;
+}
+
+/* 文本高亮样式 */
+.highlight-error {
+    background-color: rgba(255, 0, 0, 0.1);
+    border-bottom: 2px solid #ff0000;
+}
+
+.highlight-warning {
+    background-color: rgba(255, 165, 0, 0.1);
+    border-bottom: 2px solid #ffa500;
+}
+
+.highlight-info {
+    background-color: rgba(0, 0, 255, 0.1);
+    border-bottom: 2px solid #0000ff;
+}
+
+.options {
+    margin: 20px 0;
+}
+
+.direction-options {
+    margin-bottom: 10px;
+}
+
+.direction-options label,
+.number-options label {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.number-options {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.number-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.number-options input[type="checkbox"] {
+    cursor: pointer;
+} 
